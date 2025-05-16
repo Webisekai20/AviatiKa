@@ -1,0 +1,24 @@
+{
+    "results": [
+      {
+        "airline": "SkyJet Airways",
+        "flightNumber": "SJ102",
+        "departure": "New York (JFK)",
+        "arrival": "London (LHR)",
+        "departureTime": "2025-06-01T08:00",
+        "arrivalTime": "2025-06-01T20:15",
+        "duration": "7h 15m",
+        "price": "₱750"
+      },
+      {
+        "airline": "Nova Air",
+        "flightNumber": "NA221",
+        "departure": "San Francisco (SFO)",
+        "arrival": "Tokyo (NRT)",
+        "departureTime": "2025-06-02T10:30",
+        "arrivalTime": "2025-06-03T14:00",
+        "duration": "11h 30m",
+        "price": "₱980"
+      }
+    ]
+  }
