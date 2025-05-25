@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AviatiKa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&family=League+Spartan:wght@100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_circle">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="template.css">
+    <script src="/js files/index.js"></script>
+    <script src="/js files/flights.js"></script>
+    <script src="/js files/other4.js"></script>
+  </head>
+  <body>
+    <div id="header" class="horizontal">
+      <a id="Logo" href="index.html">AviatiKa</a>
+      <div class="navbar">
+        <div class="horizontal">
+          <div class="nav-item" onclick="location.href='index.html'">HOME</div>
+          <div class="nav-item" onclick="location.href='#Destination'">DESTINATION</div>
+          <div class="nav-item" onclick="location.href='#Travel_Packs'">TRAVEL PACKS</div>
+          <div class="nav-item" onclick="location.href='#About_us'">ABOUT US</div>
+        </div>
+      </div>
+      <div class="nav-item" id="partner_portal" onclick="location.href='partner.html'">Join as a Partner</div>
+      <div class="profile nav-item" onclick="location.href='log.html'">
+        <span class="material-symbols-outlined account_img">
+          account_circle
+        </span>
+        <span class="login">Log in</span>
+      </div>
+    </div>
+    <div id="hero_banner" class="section">
+      <div class="hero_content">
+        <ul class="bottom_nav">
+          <div class="tab">
+            <button class="head_tablinks" onclick="HeaderServiceTab(event, 'Head_Flight')" id="defaultOpen_Headtab">FLIGHTS</button>
+            <button class="head_tablinks" onclick="HeaderServiceTab(event, 'Hotel_Homes')">HOTELS & HOMES</button>
+            <button class="head_tablinks" onclick="HeaderServiceTab(event, 'Cars')">CARS</button>
+            <button class="head_tablinks" onclick="HeaderServiceTab(event, 'Tours')">ATTRACTIONS & TOURS</button>
+            <button class="head_tablinks" onclick="HeaderServiceTab(event, 'Flight_Hotel')">FLIGHT + HOTEL</button>
+          </div>
+        </ul>
+      </div>
+
+      <div id="Head_Flight" class="head_tabcontent">
+        <div class="tab">
+          <button class="tablinks" onclick="serviceTab(event, 'Book')" id="defaultOpen">BOOK A FLIGHT</button>
+          <button class="tablinks" onclick="serviceTab(event, 'Manage')">MANAGE FLIGHT</button>
+          <button class="tablinks" onclick="serviceTab(event, 'Check-in')">CHECK-IN</button>
+          <button class="tablinks" onclick="serviceTab(event, 'Flight')">FLIGHT STATUS</button>
+        </div>
+
+        <div id="Book" class="tabcontent">
+        <div class="trip-options">
+          
+          <div class="trip-option" onclick="selectOption('round-trip')">
+              <div class="radio-btn active" id="round-trip">
+                  <div class="inner-circle"></div>
+              </div>
+              <span class="label">Round-trip</span>
+          </div>
+          <div class="trip-option" onclick="selectOption('one-way')">
+              <div class="radio-btn" id="one-way">
+                  <div class="inner-circle"></div>
+              </div>
+              <span class="label">One-way</span>
+          </div>
+          <div class="trip-option" onclick="selectOption('multi-city')">
+              <div class="radio-btn" id="multi-city">
+                  <div class="inner-circle"></div>
+              </div>
+              <span class="label">Multi-city</span>
+          </div>
+        </div>
+        
+        <div class="search-container">
+          <div class="split-sector">
+            <!-- from -->
+            <div class="input-group">
+                <div class="location-input">
+                    <input type="text" placeholder="Leaving from" id="origin-input">
+                </div>
+            </div>
+            <div class="direction-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <!-- TO -->
+            <div class="input-group">
+                <div class="location-input">
+                    <input type="text" placeholder="Going to" id="destination-input">
+                </div>
+            </div>
+            <!-- date range -->
+            <div class="input-group">
+              <!-- starts at -->
+              <div class="date-picker-container">
+                <button class="date-picker-input" placeholder="Start from"></button>              
+                <div class="calendar-container">
+                  <div class="calendar-header">
+                    <button class="prev-month">&lt;</button>
+                    <div class="current-month">May 2025</div>
+                    <button class="next-month">&gt;</button>
+                  </div>
+                  
+                  <div class="weekdays">
+                    <div>Su</div>
+                    <div>Mo</div>
+                    <div>Tu</div>
+                    <div>We</div>
+                    <div>Th</div>
+                    <div>Fr</div>
+                    <div>Sa</div>
+                  </div>
+                  
+                  <div class="calendar-days">
+                  </div>
+                  
+                  <div class="calendar-footer" id="calendar-footer">
+                    Select start date
+                  </div>
+                  <!-- Optional: trip type radio buttons inside container
+                  <div>
+                    <button class="radio-btn active" id="round-trip">Round Trip</button>
+                    <button class="radio-btn" id="one-way">One Way</button>
+                  </div> -->
+                </div>
+              </div>
+              <!-- ends at -->
+              <div class="date-picker-container">
+                <button class="date-picker-input" placeholder="Ends at"></button>              
+                <div class="calendar-container">
+                  <div class="calendar-header">
+                    <button class="prev-month">&lt;</button>
+                    <div class="current-month">May 2025</div>
+                    <button class="next-month">&gt;</button>
+                  </div>
+                  
+                  <div class="weekdays">
+                    <div>Su</div>
+                    <div>Mo</div>
+                    <div>Tu</div>
+                    <div>We</div>
+                    <div>Th</div>
+                    <div>Fr</div>
+                    <div>Sa</div>
+                  </div>
+                  
+                  <div class="calendar-days">
+                  </div>
+                  
+                  <div class="calendar-footer" id="calendar-footer">
+                    Select start date
+                  </div>
+                  <!-- Optional: trip type radio buttons inside container
+                  <div>
+                    <button class="radio-btn active" id="round-trip">Round Trip</button>
+                    <button class="radio-btn" id="one-way">One Way</button>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          
+          <div class="multi-city-segments active">
+            <!-- First segment -->
+            <div class="flight-segment">
+              <div class="segment-number">1</div>
+              <div class="input-group">
+                <div class="location-input">
+                  <input type="text" placeholder="Leaving from" class="origin-input">
+                </div>
+              </div>
+              
+              <div class="direction-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              
+              <div class="input-group">
+                <div class="location-input">
+                  <input type="text" placeholder="Going to" class="destination-input">
+                </div>
+              </div>
+              
+              <div class="input-group">
+                <div class="date-picker-container">
+                  <button class="date-picker-input">
+                    Tue, May 13
+                  </button>
+                  
+                  <div class="calendar-container">
+                    <div class="calendar-header">
+                      <button class="prev-month">&lt;</button>
+                      <div class="current-month">May 2025</div>
+                      <button class="next-month">&gt;</button>
+                    </div>
+                    
+                    <div class="weekdays">
+                      <div>Su</div>
+                      <div>Mo</div>
+                      <div>Tu</div>
+                      <div>We</div>
+                      <div>Th</div>
+                      <div>Fr</div>
+                      <div>Sa</div>
+                    </div>
+                    
+                    <div class="calendar-days">
+                    </div>
+                    
+                    <div class="calendar-footer" id="calendar-footer">
+                      Select start date
+                    </div>
+                    <!-- Optional: trip type radio buttons inside container
+                    <div>
+                      <button class="radio-btn active" id="round-trip">Round Trip</button>
+                      <button class="radio-btn" id="one-way">One Way</button>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Second segment -->
+            <div class="flight-segment">
+              <div class="segment-number">2</div>
+              <div class="input-group">
+                <div class="location-input">
+                  <input type="text" placeholder="Leaving from" class="origin-input">
+                </div>
+              </div>
+              
+              <div class="direction-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              
+              <div class="input-group">
+                <div class="location-input">
+                  <input type="text" placeholder="Going to" class="destination-input">
+                </div>
+              </div>
+              
+              <div class="input-group">
+                <div class="date-picker-container">
+                  <button class="date-picker-input">
+                    Tue, May 13
+                  </button>
+                  
+                  <div class="calendar-container">
+                    <div class="calendar-header">
+                      <button class="prev-month">&lt;</button>
+                       <div class="current-month">May 2025</div> 
+                      <button class="next-month">&gt;</button>
+                    </div>
+                    
+                    <div class="weekdays">
+                      <div>Su</div>
+                      <div>Mo</div>
+                      <div>Tu</div>
+                      <div>We</div>
+                      <div>Th</div>
+                      <div>Fr</div>
+                      <div>Sa</div>
+                    </div>
+                    
+                    <div class="calendar-days">
+                    </div>
+                    
+                    <div class="calendar-footer" id="calendar-footer">
+                      Select start date
+                    </div>
+                    <!-- Optional: trip type radio buttons inside container
+                    <div>
+                      <button class="radio-btn active" id="round-trip">Round Trip</button>
+                      <button class="radio-btn" id="one-way">One Way</button>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <button class="add-flight-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Add another flight
+            </button>
+          </div>
+          
+          <div class="input-group">
+            <div class="passenger-input" id="passenger-selector">
+                <div class="passenger-details"> 
+                    <span id="passenger-summary">  1 Adult, Economy  </span>
+                </div>
+                <div class="dropdown-icon" id="passenger-dropdown-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="passenger-dropdown" id="passenger-dropdown">
+                <div class="make_horizontal">
+                  <div class="passenger-section">
+                    <div class="passenger-header">Passengers</div>
+                    
+                    <div class="passenger-counter">
+                        <div class="passenger-type">Adults</div>
+                        <div class="counter-controls">
+                            <button class="counter-btn" id="adult-decrease" disabled>-</button>
+                            <span class="counter-value" id="adult-count">1</span>
+                            <button class="counter-btn" id="adult-increase">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="passenger-counter">
+                        <div class="passenger-type">Children</div>
+                        <div class="counter-controls">
+                            <button class="counter-btn" id="child-decrease" disabled>-</button>
+                            <span class="counter-value" id="child-count">0</span>
+                            <button class="counter-btn" id="child-increase">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="passenger-counter">
+                        <div class="passenger-type">Infants</div>
+                        <div class="counter-controls">
+                            <button class="counter-btn" id="infant-decrease" disabled>-</button>
+                            <span class="counter-value" id="infant-count">0</span>
+                            <button class="counter-btn" id="infant-increase">+</button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="cabin-class">
+                    <div class="passenger-header">Cabin class</div>
+                    <div class="radio-group">
+                        <div class="radio-option" data-value="economy">
+                            <div class="radio-circle selected"><div class="radio-dot"></div></div>
+                            <div>Economy</div>
+                        </div>
+                        <div class="radio-option" data-value="premium">
+                            <div class="radio-circle"><div class="radio-dot"></div></div>
+                            <div>Premium economy</div>
+                        </div>
+                        <div class="radio-option" data-value="business">
+                            <div class="radio-circle"><div class="radio-dot"></div></div>
+                            <div>Business class</div>
+                        </div>
+                        <div class="radio-option" data-value="first">
+                            <div class="radio-circle"><div class="radio-dot"></div></div>
+                            <div>First class</div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="passenger-footer">
+                    <button class="calendar-btn primary" id="apply-passengers">Done</button>
+                </div>
+            </div>
+          </div>
+
+          <button class="search-button">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Search
+          </button>
+        </div>
+        </div>
+        <div id="Manage" class="tabcontent">
+          <h2 class="tab_Title">Find Bookings</h2>
+          <div class="make_horizontal">
+            <div class="left_input">
+              <div class="input-group_manage">
+                <div class="BookingNum-input">
+                    <input type="text" placeholder="Booking Number" >
+                </div>
+              </div>
+              <div class="input-group_manage">
+                <div class="pin-input">
+                    <input type="text" placeholder="4-digit PIN" >
+                </div>
+              </div>
+            </div>
+            <div id="manage_rigth_note" class="right_note">
+              <h4><strong>Please enter your booking number and PIN</strong></h4>
+              <li>Find your confirmation email</li>
+              <li>Enter your booking number and PIN</li>
+            </div>
+          </div>
+          <div class="general_Searchbtn">
+            <button class="search-button">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Search
+            </button>
+          </div>
+        </div>
+        <div id="Check-in" class="tabcontent">
+          <div class="make_horizontal">
+            <div class="left_input">
+              <h2 class="tab_Title">Find Bookings</h2>
+              <div class="input-group_manage">
+                <div class="BookingNum-input">
+                    <input type="text" placeholder="Booking Number" >
+                </div>
+              </div>
+              <div class="input-group_manage">
+                <div class="pin-input">
+                    <input type="text" placeholder="4-digit PIN" >
+                </div>
+              </div>
+            </div>
+            <div id="checkIn_right_note" class="right_note">
+              <p><br>Departure: </p>
+              <p>Arrival: </p>
+              <p>Check-in Close: </p>
+              <p>Check-in Open: </p>
+              <p>Check-in Baggage: </p>
+              <p>Seat: </p>
+            </div>
+          </div>
+          <div class="general_Searchbtn">
+            <button class="search-button">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Search
+          </button>
+          </div>
+        </div>
+        <div id="Flight" class="tabcontent">
+          <div class="make_horizontal">
+            <div class="left_input">
+              <h2 class="tab_Title">Find Bookings</h2>
+              <div class="input-group_manage">
+                <div class="BookingNum-input">
+                    <input type="text" placeholder="Booking Number" >
+                </div>
+              </div>
+              <div class="input-group_manage">
+                <div class="pin-input">
+                    <input type="text" placeholder="4-digit PIN" >
+                </div>
+              </div>
+            </div>
+            <div id="flight_right_note"  class="right_note">
+              <p><br>Airport: </p>
+              <p>Flight Route:</p>
+              <p class="border_bottom">Flight Status:</p>
+              <p>Gate Info: <strong> </strong></p>
+              <p>Check-in Close: </p>
+              <p>Check-in Open:</p>
+              <p>Seat: </p>
+            </div>
+          </div>
+          <div class="general_Searchbtn">
+            <button class="search-button">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Search
+          </button>
+          </div>
+        </div>
+      </div>
+      <div id="Hotel_Homes" class="head_tabcontent">
+        <div class="tabcontent_general">
+          <h2 class="tab_Title">Find Bookings</h2>
+          <div class="make_horizontal">
+            <div class="left_input">
+              <div class="input-group_manage">
+                <div class="hotel_Homes-input">
+                    <input type="text" placeholder="Place">
+                </div>
+              </div>
+            </div>
+            <div class="right_note">
+              <div class="input-group">
+                <div class="date-picker-container">
+                  <button class="date-picker-input">Tue, May 13</button>
+                  <div class="calendar-container" style="display: none;">
+                    <div class="calendar-header">
+                      <button class="prev-month">&lt;</button>
+                      <div class="current-month">May 2025</div>
+                      <button class="next-month">&gt;</button>
+                    </div>
+                    
+                    <div class="weekdays">
+                      <div>Su</div>
+                      <div>Mo</div>
+                      <div>Tu</div>
+                      <div>We</div>
+                      <div>Th</div>
+                      <div>Fr</div>
+                      <div>Sa</div>
+                    </div>
+                    
+                    <div class="calendar-days"><div class="calendar-day empty"></div><div class="calendar-day empty"></div><div class="calendar-day empty"></div><div class="calendar-day empty"></div><div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day">4</div><div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day">7</div><div class="calendar-day">8</div><div class="calendar-day">9</div><div class="calendar-day">10</div><div class="calendar-day">11</div><div class="calendar-day">12</div><div class="calendar-day">13</div><div class="calendar-day">14</div><div class="calendar-day">15</div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div><div class="calendar-day">20</div><div class="calendar-day">21</div><div class="calendar-day">22</div><div class="calendar-day">23</div><div class="calendar-day">24</div><div class="calendar-day">25</div><div class="calendar-day">26</div><div class="calendar-day">27</div><div class="calendar-day">28</div><div class="calendar-day">29</div><div class="calendar-day">30</div><div class="calendar-day">31</div></div>
+                    
+                    <div class="calendar-footer" id="calendar-footer">
+                      Select start date
+                    </div>
+                  </div>
+                </div>
+
+                <div class="date-picker-container">
+                  <button class="date-picker-input">Tue, May 13</button>
+                  <div class="calendar-container" style="display: none;">
+                    <div class="calendar-header">
+                      <button class="prev-month">&lt;</button>
+                      <div class="current-month">May 2025</div>
+                      <button class="next-month">&gt;</button>
+                    </div>
+                    
+                    <div class="weekdays">
+                      <div>Su</div>
+                      <div>Mo</div>
+                      <div>Tu</div>
+                      <div>We</div>
+                      <div>Th</div>
+                      <div>Fr</div>
+                      <div>Sa</div>
+                    </div>
+                    
+                    <div class="calendar-days"><div class="calendar-day empty"></div><div class="calendar-day empty"></div><div class="calendar-day empty"></div><div class="calendar-day empty"></div><div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day">4</div><div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day">7</div><div class="calendar-day">8</div><div class="calendar-day">9</div><div class="calendar-day">10</div><div class="calendar-day">11</div><div class="calendar-day">12</div><div class="calendar-day">13</div><div class="calendar-day">14</div><div class="calendar-day">15</div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div><div class="calendar-day">20</div><div class="calendar-day">21</div><div class="calendar-day">22</div><div class="calendar-day">23</div><div class="calendar-day">24</div><div class="calendar-day">25</div><div class="calendar-day">26</div><div class="calendar-day">27</div><div class="calendar-day">28</div><div class="calendar-day">29</div><div class="calendar-day">30</div><div class="calendar-day">31</div></div>
+                    
+                    <div class="calendar-footer" id="calendar-footer">
+                      Select start date
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="input-group">
+                <div class="passenger-input" id="h_h_passenger-selector">
+                    <div class="passenger-details"> 
+                        <span id="h_h_passenger-summary">  1 Adult </span>
+                    </div>
+                    <div class="dropdown-icon" id="passenger-dropdown-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="passenger-dropdown" id="h_h_passenger-dropdown">
+                    <div class="make_horizontal">
+                      <div class="passenger-section">
+                        <div class="passenger-header">Passengers</div>
+                        <div class="passenger-counter">
+                            <div class="passenger-type">Adults</div>
+                            <div class="counter-controls">
+                                <button class="counter-btn" id="h_h_adult-decrease" disabled>-</button>
+                                <span class="counter-value" id="h_h_adult-count">1</span>
+                                <button class="counter-btn" id="h_h_adult-increase">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="passenger-counter">
+                            <div class="passenger-type">Children</div>
+                            <div class="counter-controls">
+                                <button class="counter-btn" id="h_h_child-decrease" disabled>-</button>
+                                <span class="counter-value" id="h_h_child-count">0</span>
+                                <button class="counter-btn" id="h_h_child-increase">+</button>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="passenger-footer">
+                        <button class="calendar-btn primary" id="h_h_apply-passengers">Done</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="general_Searchbtn">
+            <button id="h_h_search-button">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Search
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="Cars" class="head_tabcontent"> 
+        <div class="tabcontent_general">
+          <h2 class="tab_Title">Find Cars</h2>
+           
+              <div class="split-sector">
+                <div class="input-group">
+                  <div class="location-input">
+                    <input type="text" placeholder="location" class="origin-input">
+                  </div>
+                </div>
+                <div class="input-group">
+                  <!-- date starts at -->
+                  <div class="date-picker-container">
+                    <button class="date-picker-input" placeholder="Start from"></button>              
+                    <div class="calendar-container">
+                      <div class="calendar-header">
+                        <button class="prev-month">&lt;</button>
+                        <div class="current-month">May 2025</div>
+                        <button class="next-month">&gt;</button>
+                      </div>
+                      
+                      <div class="weekdays">
+                        <div>Su</div>
+                        <div>Mo</div>
+                        <div>Tu</div>
+                        <div>We</div>
+                        <div>Th</div>
+                        <div>Fr</div>
+                        <div>Sa</div>
+                      </div>
+                      
+                      <div class="calendar-days">
+                      </div>
+                      
+                      <div class="calendar-footer" id="calendar-footer">
+                        Select start date
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ends at -->
+                  <div class="date-picker-container">
+                    <button class="date-picker-input" placeholder="Ends at"></button>              
+                    <div class="calendar-container">
+                      <div class="calendar-header">
+                        <button class="prev-month">&lt;</button>
+                        <div class="current-month">May 2025</div>
+                        <button class="next-month">&gt;</button>
+                      </div>
+                      
+                      <div class="weekdays">
+                        <div>Su</div>
+                        <div>Mo</div>
+                        <div>Tu</div>
+                        <div>We</div>
+                        <div>Th</div>
+                        <div>Fr</div>
+                        <div>Sa</div>
+                      </div>
+                      
+                      <div class="calendar-days">
+                      </div>
+                      
+                      <div class="calendar-footer" id="calendar-footer">
+                        Select start date
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom_note">
+                <div class="input-group">
+                  <div class="passenger-input" id="car_passenger-selector">
+                      <div class="passenger-details"> 
+                          <span id="car_passenger-summary">  1 Adult, Economy  </span>
+                      </div>
+                      <div class="dropdown-icon" id="passenger-dropdown-icon">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                      </div>
+                  </div>
+                  
+                  <div class="passenger-dropdown" id="car_passenger-dropdown">
+                      <div class="make_horizontal">
+                        <div class="passenger-section">
+                          <div class="passenger-header">Passengers</div>
+                          
+                          <div class="passenger-counter">
+                              <div class="passenger-type">Adults</div>
+                              <div class="counter-controls">
+                                  <button class="counter-btn" id="car_adult-decrease" disabled>-</button>
+                                  <span class="counter-value" id="car_adult-count">1</span>
+                                  <button class="counter-btn" id="car_adult-increase">+</button>
+                              </div>
+                          </div>
+                          
+                          <div class="passenger-counter">
+                              <div class="passenger-type">Children</div>
+                              <div class="counter-controls">
+                                  <button class="counter-btn" id="car_child-decrease" disabled>-</button>
+                                  <span class="counter-value" id="car_child-count">0</span>
+                                  <button class="counter-btn" id="car_child-increase">+</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="passenger-footer">
+                          <button class="calendar-btn primary" id="car_apply-passengers">Done</button>
+                      </div>
+                  </div>
+                  <select>
+                    <option value="all">Pick-Up</option>
+                    <option value="5">12:00 AM</option>
+                    <option value="4">01:00 AM</option>
+                    <option value="3">02:00 AM</option>
+                    <option value="2">03:00 AM</option>
+                    <option value="1">04:00 AM</option>
+                    <option value="5">05:00 AM</option>
+                    <option value="4">06:00 AM</option>
+                    <option value="3">07:00 AM</option>
+                    <option value="2">08:00 AM</option>
+                    <option value="1">09:00 AM</option>
+                    <option value="5">10:00 AM</option>
+                    <option value="4">11:00 AM</option>
+                    <option value="3">12:00 PM</option>
+                    <option value="2">01:00 PM</option>
+                    <option value="1">02:00 PM</option>
+                    <option value="5">03:00 PM</option>
+                    <option value="4">04:00 PM</option>
+                    <option value="3">05:00 PM</option>
+                    <option value="2">06:00 PM</option>
+                    <option value="1">07:00 PM</option>
+                    <option value="1">08:00 PM</option>
+                    <option value="5">09:00 PM</option>
+                    <option value="4">10:00 PM</option>
+                    <option value="3">11:00 PM</option>
+                  </select>
+                  <select>
+                    <opion value="all">Drop-Off</option>
+                    <option value="5">12:00 AM</option>
+                    <option value="4">01:00 AM</option>
+                    <option value="3">02:00 AM</option>
+                    <option value="2">03:00 AM</option>
+                    <option value="1">04:00 AM</option>
+                    <option value="5">05:00 AM</option>
+                    <option value="4">06:00 AM</option>
+                    <option value="3">07:00 AM</option>
+                    <option value="2">08:00 AM</option>
+                    <option value="1">09:00 AM</option>
+                    <option value="5">10:00 AM</option>
+                    <option value="4">11:00 AM</option>
+                    <option value="3">12:00 PM</option>
+                    <option value="2">01:00 PM</option>
+                    <option value="1">02:00 PM</option>
+                    <option value="5">03:00 PM</option>
+                    <option value="4">04:00 PM</option>
+                    <option value="3">05:00 PM</option>
+                    <option value="2">06:00 PM</option>
+                    <option value="1">07:00 PM</option>
+                    <option value="1">08:00 PM</option>
+                    <option value="5">09:00 PM</option>
+                    <option value="4">10:00 PM</option>
+                    <option value="3">11:00 PM</option>
+                  </select>
+                </div>
+              </div>
+
+          <div class="general_Searchbtn">
+            <button id="car_search-button" class="search-button">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Search
+          </button>
+          </div>
+        </div>
+      </div>
+      <div id="Tours" class="head_tabcontent">
+        <div class="tabcontent_general"> 
+           <h2 class="tab_Title">Find Attractions</h2>
+          <div class="location-input">
+            <input type="text" placeholder="Location" class="origin-input">
+          </div>
+          <div class="general_Searchbtn">
+            <button id="att_search-button" class="search-button">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Search
+          </button>
+          </div>
+        </div>
+      </div>
+      <div id="Flight_Hotel" class="head_tabcontent"> 
+          <div class="tabcontent_general">
+             <h2 class="Flight + Hotel">Find Cars</h2>
+            <div class="search-container">
+              <!-- First segment -->
+              <div class="flight-segment">
+                <div class="input-group">
+                  <div class="location-input">
+                    <input type="text" placeholder="Leaving from" class="origin-input">
+                  </div>
+                </div>
+                
+                <div class="direction-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                
+                <div class="input-group">
+                  <div class="location-input">
+                    <input type="text" placeholder="Going to" class="destination-input">
+                  </div>
+                </div>
+                
+                <div class="input-group">
+                  <div class="date-picker-container">
+                    <button class="date-picker-input">
+                      Tue, May 13
+                    </button>
+                    
+                    <div class="calendar-container">
+                      <div class="calendar-header">
+                        <button class="prev-month">&lt;</button>
+                        <div class="current-month">May 2025</div>
+                        <button class="next-month">&gt;</button>
+                      </div>
+                      
+                      <div class="weekdays">
+                        <div>Su</div>
+                        <div>Mo</div>
+                        <div>Tu</div>
+                        <div>We</div>
+                        <div>Th</div>
+                        <div>Fr</div>
+                        <div>Sa</div>
+                      </div>
+                      
+                      <div class="calendar-days">
+                      </div>
+                      
+                      <div class="calendar-footer" id="calendar-footer">
+                        Select start date
+                      </div>
+                      <!-- Optional: trip type radio buttons inside container
+                      <div>
+                        <button class="radio-btn active" id="round-trip">Round Trip</button>
+                        <button class="radio-btn" id="one-way">One Way</button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="input-group">
+                  <div class="date-picker-container">
+                    <button class="date-picker-input">
+                      Tue, May 13
+                    </button>
+                    
+                    <div class="calendar-container">
+                      <div class="calendar-header">
+                        <button class="prev-month">&lt;</button>
+                        <div class="current-month">May 2025</div>
+                        <button class="next-month">&gt;</button>
+                      </div>
+                      
+                      <div class="weekdays">
+                        <div>Su</div>
+                        <div>Mo</div>
+                        <div>Tu</div>
+                        <div>We</div>
+                        <div>Th</div>
+                        <div>Fr</div>
+                        <div>Sa</div>
+                      </div>
+                      
+                      <div class="calendar-days">
+                      </div>
+                      
+                      <div class="calendar-footer" id="calendar-footer">
+                        Select start date
+                      </div>
+                      <!-- Optional: trip type radio buttons inside container
+                      <div>
+                        <button class="radio-btn active" id="round-trip">Round Trip</button>
+                        <button class="radio-btn" id="one-way">One Way</button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Second segment -->
+              <div class="flight-segment">          
+                <div class="input-group">
+                  <div class="location-input">
+                    <input type="text" placeholder="City Destination" class="destination-input">
+                  </div>
+                </div>
+                  
+                <div class="input-group">
+                  <div class="date-picker-container">
+                    <button class="date-picker-input">
+                      Tue, May 13
+                    </button>
+                    
+                    <div class="calendar-container">
+                      <div class="calendar-header">
+                        <button class="prev-month">&lt;</button>
+                          <div class="current-month">May 2025</div> 
+                        <button class="next-month">&gt;</button>
+                      </div>
+                      
+                      <div class="weekdays">
+                        <div>Su</div>
+                        <div>Mo</div>
+                        <div>Tu</div>
+                        <div>We</div>
+                        <div>Th</div>
+                        <div>Fr</div>
+                        <div>Sa</div>
+                      </div>
+                      
+                      <div class="calendar-days">
+                      </div>
+                      
+                      <div class="calendar-footer" id="calendar-footer">
+                        Select start date
+                      </div>
+                      <!-- Optional: trip type radio buttons inside container
+                      <div>
+                        <button class="radio-btn active" id="round-trip">Round Trip</button>
+                        <button class="radio-btn" id="one-way">One Way</button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <div class="date-picker-container">
+                    <button class="date-picker-input">
+                      Tue, May 13
+                    </button>
+                    
+                    <div class="calendar-container">
+                      <div class="calendar-header">
+                        <button class="prev-month">&lt;</button>
+                        <div class="current-month">May 2025</div>
+                        <button class="next-month">&gt;</button>
+                      </div>
+                      
+                      <div class="weekdays">
+                        <div>Su</div>
+                        <div>Mo</div>
+                        <div>Tu</div>
+                        <div>We</div>
+                        <div>Th</div>
+                        <div>Fr</div>
+                        <div>Sa</div>
+                      </div>
+                      
+                      <div class="calendar-days">
+                      </div>
+                      
+                      <div class="calendar-footer" id="calendar-footer">
+                        Select start date
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div class="general_Searchbtn">
+                <button id="f_h_search-button" class="search-button">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Search
+              </button>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <!-- side text post ni -->
+      <div class="post">
+        <h1>Post Title</h1>
+        <span id="post_description">description</span>
+        <button>Learn more</button>
+      </div>
+    </div>
+    <div id="results"></div>
+    <div id="h_h_results"></div>
+    <div id="car_results"></div>
+    <div id="att_results"></div>
+    <div id="f_h_results"></div>
+
+    <!-- Popular Destinations Section -->
+    <div id="Destination" class="section">
+      <div class="section-title">
+        <h2>Popular Destinations</h2>
+        <p>Explore the beauty of the Philippines</p>
+      </div>
+      
+      <div class="destination-tabs">
+        <div class="destination-tab-buttons">
+          <button class="dest-tablinks active" onclick="openDestination(event, 'Luzon')">Luzon</button>
+          <button class="dest-tablinks" onclick="openDestination(event, 'Visayas')">Visayas</button>
+          <button class="dest-tablinks" onclick="openDestination(event, 'Mindanao')">Mindanao</button>
+        </div>
+        
+        <div id="Luzon" class="dest-tabcontent">
+          <div class="destination-grid"></div>
+        </div>
+        <div id="Visayas" class="dest-tabcontent">
+          <div class="destination-grid"></div>
+        </div>
+        <div id="Mindanao" class="dest-tabcontent">
+          <div class="destination-grid"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Travel Packs Section -->
+    <div id="Travel_Packs" class="section">
+      <div class="section-title">
+        <h2>Explore Travel Packs</h2>
+        <p>Curated itineraries for your next adventure</p>
+      </div>
+      
+      <div class="travel-pack-container"></div>
+      
+      <!-- Itinerary Planner -->
+      <div class="itinerary-planner">
+        <div class="planner-info">
+          <h3>Customize Your Journey</h3>
+          <p>Create your dream vacation with our itinerary planner</p>
+          <button class="start-planning">Start Planning</button>
+        </div>
+      </div>
+      
+      <!-- Customer Reviews -->
+      <div class="customer-reviews">
+        <h3>What Our Travelers Say</h3>
+        <div class="reviews-container">
+        </div>
+      </div>
+    </div>
+    
+    <!-- About Us Section -->
+    <div id="About_us" class="section">
+      <div class="section-title">
+        <h2>About AviatiKa</h2>
+        <p>Your journey begins with us</p>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-image">
+          <img src="/resources/pika.jpg" alt="AviatiKa Team">
+        </div>
+        
+        <div class="about-text">
+          <p>AviatiKa is the Philippines' premier travel platform, connecting travelers to the country's most beautiful destinations. Founded in 2020, we've been on a mission to make domestic travel more accessible, affordable, and enjoyable for everyone.</p>
+          
+          <p>Our team of travel enthusiasts works tirelessly to curate the best travel experiences, partnering with local businesses to provide authentic and unforgettable journeys across Luzon, Visayas, and Mindanao.</p>
+          
+          <h4>Our Values</h4>
+          <ul>
+            <li><strong>Authenticity:</strong> We showcase the true beauty of Filipino destinations</li>
+            <li><strong>Sustainability:</strong> We promote responsible tourism practices</li>
+            <li><strong>Community:</strong> We support local economies and businesses</li>
+            <li><strong>Excellence:</strong> We strive to provide the best service possible</li>
+          </ul>
+          
+          <button class="learn-more">Learn More About Us</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h4>AviatiKa</h4>
+          <p>Your journey begins with us</p>
+          <div class="social-media">
+            <a href="#" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Facebook_Logo_2023.png/1200px-Facebook_Logo_2023.png" alt="Our Facebook Page"></a>
+            <a href="#" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="Our Instagram Page"></a>
+            <a href="#" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpg/500px-X_logo.jpg" alt="Our X Page"></a>
+            <a href="#" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="Our YouTube Channel"></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#Destination">Destinations</a></li>
+            <li><a href="#Travel_Packs">Travel Packs</a></li>
+            <li><a href="#About_us">About Us</a></li>
+            <li><a href="partner.html">Partner Membership</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Customer Support</h4>
+          <ul>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Booking Policy</a></li>
+            <li><a href="#">Cancellation Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Newsletter</h4>
+          <p>Subscribe to get special offers and travel updates</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email address">
+            <button>Subscribe</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 AviatiKa. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

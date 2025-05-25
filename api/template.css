@@ -1,0 +1,162 @@
+  /* Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sansation', sans-serif;
+  }
+  
+  :not(hover){
+    transition: background-color 0.5s, box-shadow 0.5s;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'League Spartan', sans-serif;
+  }
+  
+  body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .horizontal {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Header Styles */
+  #header {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    justify-content: space-between;
+  }
+  
+  #Logo {
+    font-family: 'Gantari', sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    color: #0066cc;
+    text-decoration: none;
+    margin-right: 2rem;
+  }
+  
+  .navbar {
+    flex-grow: 1;
+  }
+  
+  .nav-item {
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.3s;
+    font-size: 1.2rem;
+  }
+  
+  .nav-item:hover {
+    color: #0066cc;
+  }
+  
+  #partner_portal, #index_portal {
+    background-color: #0066cc;
+    color: white;
+    border-radius: 4px;
+    margin-right: 1rem;
+  }
+
+  #partner_portal:hover,  #index_portal:hover{
+    background-color: #0055aa;
+    transition: background-color 0.3s;
+  }
+
+  #partner_portal:not(hover),  #index_portal:not(hover){
+    transition: background-color 0.5s, box-shadow 0.5s;
+  }
+  
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .account_img{
+    font-size: 50px;
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 200,
+    'GRAD' 0,
+    'opsz' 24;
+  }
+
+  /*Hanging Butons*/
+  .hang_div{
+    z-index: 3;
+    position: absolute;
+    left: 2em;
+    bottom: 47.5em;
+    padding: 1em;
+    float: left;
+    background-color: #fff;
+    margin: auto;
+    border-radius: 0.6em;
+  }
+  
+  .hang_div a{
+    color: #333;
+    font-family: 'Sansation', sans-serif;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  
+  .hang_div a:hover{
+    color: #0066cc;
+  }
+
+  /* Footer Styles */
+  footer {
+    background-color: #333;
+    color: white;
+    padding: 4rem 2rem 1rem;
+    margin-top: 4rem;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 3 em;
+  }
+  
+  .footer-section a{
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .footer-section li{
+    list-style-type: none;
+  }
+  
+  .social-media {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .social-media img{
+    height: 30px;
+    width: auto;
+  }
