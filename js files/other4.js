@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // fetch & show results data
     h_h_searchBtn.addEventListener('click', function () {      
-        fetch('/json files/hotel&homes.json')
+        fetch('/json%20files/hotel&homes.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // fetch & show results data
     h_h_searchBtn.addEventListener('click', function () {        
-        fetch('/json files/cars.json')
+        fetch('/json%20files/cars.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -484,7 +484,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // fetch & show results data
     h_h_searchBtn.addEventListener('click', function () {        
-        fetch('/json files/attractions&Tours.json')
+        fetch('/json%20files/attractions&Tours.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -594,13 +594,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // fetch & show results data
     f_h_searchBtn.addEventListener('click', function () {
-        // Show loading indicator
-        // const loadingIndicator = document.createElement('div');
-        // loadingIndicator.className = 'loading-indicator';
-        // loadingIndicator.textContent = 'Searching for flight & hotel packages...';
-        // f_h_resultsContainer.appendChild(loadingIndicator);
+
         
-        fetch('/json files/flight+hotels.json')
+        fetch('/json%20files/flight+hotels.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -608,11 +604,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.json();
             })
             .then(data => {
-                // Remove loading indicator
-                // if (loadingIndicator) {
-                //     loadingIndicator.remove();
-                // }
-                
+
                 // Create modal
                 const f_h_modal = document.createElement('div');
                 f_h_modal.className = 'modal';

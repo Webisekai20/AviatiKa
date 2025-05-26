@@ -1,183 +1,183 @@
 
 // Passenger & Class 
 document.addEventListener('DOMContentLoaded', function() {
-     // Elements
-    const passengerSelector = document.getElementById('passenger-selector');
-    const passengerDropdown = document.getElementById('passenger-dropdown');
-    const passengerSummary = document.getElementById('passenger-summary');
-    const applyButton = document.getElementById('apply-passengers');
-    
-    // Counter buttons
-    const adultDecrease = document.getElementById('adult-decrease');
-    const adultIncrease = document.getElementById('adult-increase');
-    const adultCount = document.getElementById('adult-count');
-    
-    const childDecrease = document.getElementById('child-decrease');
-    const childIncrease = document.getElementById('child-increase');
-    const childCount = document.getElementById('child-count');
-    
-    const infantDecrease = document.getElementById('infant-decrease');
-    const infantIncrease = document.getElementById('infant-increase');
-    const infantCount = document.getElementById('infant-count');
-    
-    // Radio options
-    const radioOptions = document.querySelectorAll('.radio-option');
-    
-    // State
-    let state = {
-       adults: 1,
-        children: 0,
-        infants: 0,
-        cabinClass: 'economy'
-    };
-    
-    //Toggle dropdown visibility
-    passengerSelector.addEventListener('click', function(e) {
-        e.stopPropagation();
-        passengerDropdown.classList.toggle('visible');
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!passengerDropdown.contains(e.target) && e.target !== passengerSelector) {
-            passengerDropdown.classList.remove('visible');
-        }
-    });
-    
-    // Apply button closes dropdown and saves selection
-    applyButton.addEventListener('click', function() {
-        passengerDropdown.classList.remove('visible');
-        updateSummary();
-    });
-    
-    // Adult counter
-    adultDecrease.addEventListener('click', function() {
-        if (state.adults > 1) {
-            state.adults--;
-            updateCounters();
-        }
-    });
-    
-    adultIncrease.addEventListener('click', function() {
-        if (state.adults < 9) {
-            state.adults++;
-            updateCounters();
-        }
-    });
-    
-    // Child counter
-    childDecrease.addEventListener('click', function() {
-        if (state.children > 0) {
-            state.children--;
-            updateCounters();
-        }
-    });
-    
-    childIncrease.addEventListener('click', function() {
-        if (state.children < 9) {
-            state.children++;
-            updateCounters();
-        }
-    });
-    
-    // Infant counter
-    infantDecrease.addEventListener('click', function() {
-        if (state.infants > 0) {
-            state.infants--;
-            updateCounters();
-        }
-    });
-    
-    infantIncrease.addEventListener('click', function() {
-        if (state.infants < Math.min(state.adults, 9)) {
-            state.infants++;
-            updateCounters();
-        }
-    });
-    
-    // Cabin class selection
-    radioOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            // Remove selected class from all options
-            radioOptions.forEach(opt => {
-                opt.querySelector('.radio-circle').classList.remove('selected');
-            });
-            
-            // Add selected class to clicked option
-            this.querySelector('.radio-circle').classList.add('selected');
-            
-            // Update state
-            state.cabinClass = this.dataset.value;
-        });
-    });
-    
-    // Update counter display and button states
-    function updateCounters() {
-        // Update count displays
-        adultCount.textContent = state.adults;
-        childCount.textContent = state.children;
-        infantCount.textContent = state.infants;
-        
-        // Update button states based on limits
-        adultDecrease.disabled = state.adults <= 1;
-        adultIncrease.disabled = state.adults >= 9;
-        
-        childDecrease.disabled = state.children <= 0;
-        childIncrease.disabled = state.children >= 9;
-        
-        infantDecrease.disabled = state.infants <= 0;
-        infantIncrease.disabled = state.infants >= Math.min(state.adults, 9);
-    }
-    
-    // Update summary text
-    function updateSummary() {
-        let summary = '';
-        
-        // Add passenger counts
-        let passengerText = [];
-        if (state.adults === 1) {
-            passengerText.push('1 Adult');
-        } else if (state.adults > 1) {
-            passengerText.push(`${state.adults} Adults`);
-        }
-        
-        if (state.children === 1) {
-            passengerText.push('1 Child');
-        } else if (state.children > 1) {
-            passengerText.push(`${state.children} Children`);
-        }
-        
-        if (state.infants === 1) {
-            passengerText.push('1 Infant');
-        } else if (state.infants > 1) {
-            passengerText.push(`${state.infants} Infants`);
-        }
-        
-        summary = passengerText.join(', ');
-        
-        // Add cabin class
-        let cabinClassText = '';
-        switch (state.cabinClass) {
-            case 'economy':
-                cabinClassText = 'Economy';
-                break;
-            case 'premium':
-                cabinClassText = 'Premium economy';
-                break;
-            case 'business':
-                cabinClassText = 'Business class';
-                break;
-            case 'first':
-                cabinClassText = 'First class';
-                break;
-        }
-        
-        summary += `, ${cabinClassText}`;
-        passengerSummary.textContent = summary;
-    }
-    
-    // Initialize
-    updateCounters();
+  // Elements
+  const passengerSelector = document.getElementById('passenger-selector');
+  const passengerDropdown = document.getElementById('passenger-dropdown');
+  const passengerSummary = document.getElementById('passenger-summary');
+  const applyButton = document.getElementById('apply-passengers');
+  
+  // Counter buttons
+  const adultDecrease = document.getElementById('adult-decrease');
+  const adultIncrease = document.getElementById('adult-increase');
+  const adultCount = document.getElementById('adult-count');
+  
+  const childDecrease = document.getElementById('child-decrease');
+  const childIncrease = document.getElementById('child-increase');
+  const childCount = document.getElementById('child-count');
+  
+  const infantDecrease = document.getElementById('infant-decrease');
+  const infantIncrease = document.getElementById('infant-increase');
+  const infantCount = document.getElementById('infant-count');
+  
+  // Radio options
+  const radioOptions = document.querySelectorAll('.radio-option');
+  
+  // State
+  let state = {
+      adults: 1,
+      children: 0,
+      infants: 0,
+      cabinClass: 'economy'
+  };
+  
+  //Toggle dropdown visibility
+  passengerSelector.addEventListener('click', function(e) {
+      e.stopPropagation();
+      passengerDropdown.classList.toggle('visible');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+      if (!passengerDropdown.contains(e.target) && e.target !== passengerSelector) {
+          passengerDropdown.classList.remove('visible');
+      }
+  });
+  
+  // Apply button closes dropdown and saves selection
+  applyButton.addEventListener('click', function() {
+      passengerDropdown.classList.remove('visible');
+      updateSummary();
+  });
+  
+  // Adult counter
+  adultDecrease.addEventListener('click', function() {
+      if (state.adults > 1) {
+          state.adults--;
+          updateCounters();
+      }
+  });
+  
+  adultIncrease.addEventListener('click', function() {
+      if (state.adults < 9) {
+          state.adults++;
+          updateCounters();
+      }
+  });
+  
+  // Child counter
+  childDecrease.addEventListener('click', function() {
+      if (state.children > 0) {
+          state.children--;
+          updateCounters();
+      }
+  });
+  
+  childIncrease.addEventListener('click', function() {
+      if (state.children < 9) {
+          state.children++;
+          updateCounters();
+      }
+  });
+  
+  // Infant counter
+  infantDecrease.addEventListener('click', function() {
+      if (state.infants > 0) {
+          state.infants--;
+          updateCounters();
+      }
+  });
+  
+  infantIncrease.addEventListener('click', function() {
+      if (state.infants < Math.min(state.adults, 9)) {
+          state.infants++;
+          updateCounters();
+      }
+  });
+  
+  // Cabin class selection
+  radioOptions.forEach(option => {
+      option.addEventListener('click', function() {
+          // Remove selected class from all options
+          radioOptions.forEach(opt => {
+              opt.querySelector('.radio-circle').classList.remove('selected');
+          });
+          
+          // Add selected class to clicked option
+          this.querySelector('.radio-circle').classList.add('selected');
+          
+          // Update state
+          state.cabinClass = this.dataset.value;
+      });
+  });
+  
+  // Update counter display and button states
+  function updateCounters() {
+      // Update count displays
+      adultCount.textContent = state.adults;
+      childCount.textContent = state.children;
+      infantCount.textContent = state.infants;
+      
+      // Update button states based on limits
+      adultDecrease.disabled = state.adults <= 1;
+      adultIncrease.disabled = state.adults >= 9;
+      
+      childDecrease.disabled = state.children <= 0;
+      childIncrease.disabled = state.children >= 9;
+      
+      infantDecrease.disabled = state.infants <= 0;
+      infantIncrease.disabled = state.infants >= Math.min(state.adults, 9);
+  }
+  
+  // Update summary text
+  function updateSummary() {
+      let summary = '';
+      
+      // Add passenger counts
+      let passengerText = [];
+      if (state.adults === 1) {
+          passengerText.push('1 Adult');
+      } else if (state.adults > 1) {
+          passengerText.push(`${state.adults} Adults`);
+      }
+      
+      if (state.children === 1) {
+          passengerText.push('1 Child');
+      } else if (state.children > 1) {
+          passengerText.push(`${state.children} Children`);
+      }
+      
+      if (state.infants === 1) {
+          passengerText.push('1 Infant');
+      } else if (state.infants > 1) {
+          passengerText.push(`${state.infants} Infants`);
+      }
+      
+      summary = passengerText.join(', ');
+      
+      // Add cabin class
+      let cabinClassText = '';
+      switch (state.cabinClass) {
+          case 'economy':
+              cabinClassText = 'Economy';
+              break;
+          case 'premium':
+              cabinClassText = 'Premium economy';
+              break;
+          case 'business':
+              cabinClassText = 'Business class';
+              break;
+          case 'first':
+              cabinClassText = 'First class';
+              break;
+      }
+      
+      summary += `, ${cabinClassText}`;
+      passengerSummary.textContent = summary;
+  }
+  
+  // Initialize
+  updateCounters();
 });
 
 
@@ -526,7 +526,7 @@ const searchBtn = document.querySelector('.search-button');
 
 // fetch & show results data
 searchBtn.addEventListener('click', function () {
-  fetch('/json files/results.json')
+  fetch('/json%20files/results.json')
     .then(response => response.json())
     .then(data => {
       const modal = document.createElement('div');
@@ -647,7 +647,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Load flight data
-  fetch('/json files/flights.json')
+  fetch('/json%20files/flights.json')
     .then(response => {
       if (!response.ok) throw new Error("Network response was not ok");
       return response.json();

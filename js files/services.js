@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', function() {
   revealOnScroll();
 });
 
-fetch('/json files/flight_service.json')
+fetch('/json%20files/flight_service.json')
 .then(response => {
   if (!response.ok) throw new Error("Network response was not ok");
   return response.json();

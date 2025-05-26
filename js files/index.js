@@ -1,114 +1,114 @@
 let destinationData = {}; // Global to cache data
 
 // Fetch the JSON once
-fetch('/json files/destinations.json')
-  .then(response => {
-    if (!response.ok) throw new Error("Network response was not ok");
-    return response.json();
-  })
-  .then(data => {
-    destinationData = data;
-    populateAllTabs();
-    document.getElementById("defaultOpen").click();
-  })
-  .catch(error => {
-    console.error("Failed to load JSON:", error);
-  });
+fetch('/json%20files/destinations.json')
+.then(response => {
+  if (!response.ok) throw new Error("Network response was not ok");
+  return response.json();
+})
+.then(data => {
+  destinationData = data;
+  populateAllTabs();
+  document.getElementById("defaultOpen").click();
+})
+.catch(error => {
+  console.error("Failed to load JSON:", error);
+});
 
 
-fetch('/json files/travel_packs.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Failed to load travelpacks.json');
-    }
-    return response.json();
-  })
-  .then(data => {
-    const container = document.querySelector('.travel-pack-container');
-    container.innerHTML = ''; // Clear any existing content
+fetch('/json%20files/travel_packs.json')
+.then(response => {
+  if (!response.ok) {
+    throw new Error('Failed to load travelpacks.json');
+  }
+  return response.json();
+})
+.then(data => {
+  const container = document.querySelector('.travel-pack-container');
+  container.innerHTML = ''; // Clear any existing content
 
-    data.travelPacks.forEach(pack => {
-      const packDiv = document.createElement('div');
-      packDiv.className = 'travel-pack';
-      packDiv.innerHTML = `
-        <img src="${pack.image}" alt="${pack.alt}">
-        <div class="pack-info">
-          <div>
-            <h3>${pack.title}</h3>
-            <p>${pack.description}</p>
-          </div>
-          <div>
-            <div class="pack-details">
-              <span>${pack.duration}</span>
-              <span>From ${pack.price}</span>
-            </div>
-            <button class="view-itinerary">View Itinerary</button>
-          </div>
+  data.travelPacks.forEach(pack => {
+    const packDiv = document.createElement('div');
+    packDiv.className = 'travel-pack';
+    packDiv.innerHTML = `
+      <img src="${pack.image}" alt="${pack.alt}">
+      <div class="pack-info">
+        <div>
+          <h3>${pack.title}</h3>
+          <p>${pack.description}</p>
         </div>
-      `;
-      container.appendChild(packDiv);
-    });
-  })
-  .catch(error => {
-    console.error('Error loading travel packs:', error);
+        <div>
+          <div class="pack-details">
+            <span>${pack.duration}</span>
+            <span>From ${pack.price}</span>
+          </div>
+          <button class="view-itinerary">View Itinerary</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(packDiv);
   });
+})
+.catch(error => {
+  console.error('Error loading travel packs:', error);
+});
 
 
-  fetch('/json files/ratings.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Failed to load ratings.json');
-    }
-    return response.json();
-  })
-  .then(data => {
-    const container = document.querySelector('.reviews-container');
-    container.innerHTML = ''; // Clear any existing reviews
+fetch('/json%20files/ratings.json')
+.then(response => {
+  if (!response.ok) {
+    throw new Error('Failed to load ratings.json');
+  }
+  return response.json();
+})
+.then(data => {
+  const container = document.querySelector('.reviews-container');
+  container.innerHTML = ''; // Clear any existing reviews
 
-    data.rating.forEach(review => {
-      const reviewDiv = document.createElement('div');
-      reviewDiv.className = 'review';
+  data.rating.forEach(review => {
+    const reviewDiv = document.createElement('div');
+    reviewDiv.className = 'review';
 
-      const stars = '★★★★★☆☆☆☆☆'.slice(5 - review.stars, 10 - review.stars); // e.g., ★★★★☆
+    const stars = '★★★★★☆☆☆☆☆'.slice(5 - review.stars, 10 - review.stars); // e.g., ★★★★☆
 
-      reviewDiv.innerHTML = `
-        <div class="review-rating">${stars}</div>
-        <p>"${review.comment}"</p>
-        <div class="reviewer">- ${review.name}</div>
-      `;
-      container.appendChild(reviewDiv);
-    });
-  })
-  .catch(error => {
-    console.error('Error loading reviews:', error);
+    reviewDiv.innerHTML = `
+      <div class="review-rating">${stars}</div>
+      <p>"${review.comment}"</p>
+      <div class="reviewer">- ${review.name}</div>
+    `;
+    container.appendChild(reviewDiv);
   });
+})
+.catch(error => {
+  console.error('Error loading reviews:', error);
+});
 
 
-  fetch('/json files/posts.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Failed to load posts.json');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log(data);
+fetch('/json%20files/posts.json')
+.then(response => {
+  if (!response.ok) {
+    throw new Error('Failed to load posts.json');
+  }
+  return response.json();
+})
+.then(data => {
+  console.log(data);
 
-    const postTitle = document.querySelector('.post h1');
-    const postDescription = document.getElementById('post_description');
+  const postTitle = document.querySelector('.post h1');
+  const postDescription = document.getElementById('post_description');
 
-    // Access first landing_page object
-    const landingData = data.landing_page;
+  // Access first landing_page object
+  const landingData = data.landing_page;
 
-    // Set title
-    postTitle.textContent = landingData.title;
+  // Set title
+  postTitle.textContent = landingData.title;
 
-    // Build description HTML
-    postDescription.innerHTML = landingData.descriptions.map(desc => `${desc}<br>`).join('');
-  })
-  .catch(error => {
-    console.error('Error loading post:', error);
-  });
+  // Build description HTML
+  postDescription.innerHTML = landingData.descriptions.map(desc => `${desc}<br>`).join('');
+})
+.catch(error => {
+  console.error('Error loading post:', error);
+});
 
 
 function populateAllTabs() {
@@ -219,7 +219,6 @@ window.addEventListener('DOMContentLoaded', function() {
   document.querySelector(".dest-tablinks.active").click();
   revealOnScroll();
 });
-
 
 
 
