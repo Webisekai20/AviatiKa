@@ -1,0 +1,98 @@
+{
+  "Luzon": [
+    {
+      "name": "Manila",
+      "image": "/resources/luzon1.jpg",
+      "description": "The vibrant capital city"
+    },
+    {
+      "name": "Baguio",
+      "image": "/resources/luzon2.jpg",
+      "description": "The summer capital of the Philippines"
+    },
+    {
+      "name": "Vigan",
+      "image": "/resources/luzon3.webp",
+      "description": "Historic Spanish colonial town"
+    },
+    {
+      "name": "Batanes",
+      "image": "/resources/luzon4.jpg",
+      "description": "Picturesque rolling hills and stone houses"
+    },
+    {
+      "name": "Palawan",
+      "image": "/resources/luzon5.jfif",
+      "description": "Home to underground rivers and lagoons"
+    },
+    {
+      "name": "Tagaytay",
+      "image": "/resources/luzon6.jpg",
+      "description": "Cool climate with Taal Volcano view"
+    }
+  ],
+  "Visayas": [
+    {
+      "name": "Cebu",
+      "image": "/resources/visayas1.webp",
+      "description": "Queen City of the South"
+    },
+    {
+      "name": "Boracay",
+      "image": "/resources/visayas2.webp",
+      "description": "Famous for white sand beaches"
+    },
+    {
+      "name": "Bohol",
+      "image": "/resources/visayas3.jpg",
+      "description": "Home to Chocolate Hills"
+    },
+    {
+      "name": "Iloilo",
+      "image": "/resources/visayas4.jpg",
+      "description": "City of Love with rich heritage"
+    },
+    {
+      "name": "Bacolod",
+      "image": "/resources/visayas5.webp",
+      "description": "The City of Smiles"
+    },
+    {
+      "name": "Siquijor",
+      "image": "/resources/visayas6.jpg",
+      "description": "Mystical island with pristine beaches"
+    }
+  ],
+  "Mindanao": [
+    {
+      "name": "Davao",
+      "image": "/resources/mindanao1.jpg",
+      "description": "Home of the Philippine Eagle"
+    },
+    {
+      "name": "Siargao",
+      "image": "/resources/mindanao2.jpg",
+      "description": "Surfing capital of the Philippines"
+    },
+    {
+      "name": "Cagayan de Oro",
+      "image": "/resources/mindanao3.jpg",
+      "description": "Adventure capital of the Philippines"
+    },
+    {
+      "name": "Camiguin",
+      "image": "/resources/mindanao4.jpg",
+      "description": "Island born of fire with seven volcanoes"
+    },
+    {
+      "name": "Zamboanga",
+      "image": "/resources/mindanao5.jpg",
+      "description": "Asia's Latin City"
+    },
+    {
+      "name": "Surigao",
+      "image": "/resources/mindanao6.jpg",
+      "description": "Gateway to Mindanao"
+    }
+  ]
+}
